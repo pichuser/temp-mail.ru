@@ -1,0 +1,33 @@
+{
+  "name": "temp-mail.ru",
+  "version": "1.0.0",
+  "description": "Once more temp-mail.ru api wrapper",
+  "main": "dist/index.js",
+  "typings": "definitions/index",
+  "typescript": {
+    "definition": "definitions/index"
+  },
+  "devDependencies": {
+    "@types/node": "~6.0.46",
+    "@types/superagent": "^2.0.36",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^3.1.6",
+    "merge2": "^1.0.3",
+    "typedoc": "https://github.com/DatenMetzgerX/typedoc/tarball/typescript-2-build",
+    "typescript": "^2.2.1"
+  },
+  "scripts": {
+    "test": "gulp test",
+    "release": "standard-version"
+  },
+  "author": "pichuser",
+  "license": "ISC",
+  "dependencies": {
+    "@types/js-md5": "^0.4.0",
+    "@types/uuid": "^2.0.29",
+    "js-md5": "^0.4.2",
+    "rxjs": "^5.2.0",
+    "superagent": "^3.5.2",
+    "uuid": "^3.0.1"
+  }
+}

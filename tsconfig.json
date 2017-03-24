@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "lib": ["es6", "dom"], // we target Node.js(v6)
+    "module": "commonjs", // export compatibility
+    "target": "es6", // we target Node.js(v6)
+    "moduleResolution": "node", // we target Node.js(v6)
+    "declaration": true, // generate TypeScript definitions
+    "rootDir": ".",
+    "outDir": "dist" // transpile JS in this directory
+  },
+  "include": [
+    "index.ts",
+    "lib/**/*",
+    "test.ts"
+  ]
+}
