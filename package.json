@@ -1,6 +1,6 @@
 {
   "name": "temp-mail.ru",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Once more temp-mail.ru api wrapper",
   "main": "dist/index.js",
   "typings": "definitions/index",
