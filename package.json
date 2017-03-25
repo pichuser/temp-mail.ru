@@ -21,8 +21,16 @@
     "release": "standard-version",
     "jsdoc": "jsdoc2md ./dist/lib/* -t jsdoc2md/README.hbs  > README.md"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pichuser/temp-mail.ru.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pichuser/temp-mail.ru.git/issues"
+  },
+  "homepage": "https://github.com/pichuser/temp-mail.ru.git#readme",
   "author": "pichuser",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@types/js-md5": "^0.4.0",
     "@types/uuid": "^2.0.29",
