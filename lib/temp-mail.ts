@@ -3,7 +3,10 @@ import * as md5 from 'js-md5';
 import { Observable } from 'rxjs';
 import * as uuid from 'uuid';
 import { IMailObject } from './mailObject.interface';
-
+/**
+ * @module pichuser
+ */
+/** Class representing wrapper. */
 export class TempMailWrapper {
 
     private _apiUrl = 'http://api.temp-mail.ru';
@@ -12,6 +15,11 @@ export class TempMailWrapper {
         return `${this._apiUrl}${suburl}${this._format}`;
     }
 
+
+    /**
+        Get all available domains
+        @return {Observable<Array<string>>}
+     */
     public domains(): Observable<Array<string>> {
         return new Observable<Array<string>> ((observable) => {
             request.get(this.getUrl('/request/domains'))
@@ -23,6 +31,11 @@ export class TempMailWrapper {
         });
     }
 
+    /**
+     * Get all emails by mail name
+     * @param mailName
+     * @return {Observable<Array<any>>}
+     */
     public mails(mailName: string): Observable<Array<IMailObject>> {
         return new Observable<Array<any>> ((observable) => {
             let hash = md5(mailName);
@@ -35,6 +48,11 @@ export class TempMailWrapper {
         });
     }
 
+    /**
+     * Return count of mails in box
+     * @param mailName
+     * @return {Observable<number>}
+     */
     public mailsCount(mailName: string) {
         return new Observable<number>((observable) => {
             this.mails(mailName)
@@ -45,6 +63,10 @@ export class TempMailWrapper {
         });
     }
 
+    /**
+     * Get free email
+     * @return {Observable<string>}
+     */
     public randomFreeEmail(): Observable<string> {
         return new Observable<string>((observable) => {
             this.domains().subscribe((domains) => {
@@ -66,6 +88,11 @@ export class TempMailWrapper {
         });
     }
 
+    /**
+     * Delete email by id
+     * @param id
+     * @return {Observable<boolean>}
+     */
     public deleteMail(id): Observable<boolean> {
         return new Observable<boolean> ((observable) => {
             request.get(this.getUrl(`/request/delete/id/${id}`))
@@ -81,6 +108,11 @@ export class TempMailWrapper {
         });
     }
 
+    /**
+     * Return first available letter
+     * @param mailName
+     * @return {Observable<IMailObject>}
+     */
     public waitForMail(mailName): Observable<IMailObject> {
         return new Observable<IMailObject> ((observable) => {
             let self = this;

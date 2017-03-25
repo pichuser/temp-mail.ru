@@ -17,8 +17,9 @@
     "typescript": "^2.2.1"
   },
   "scripts": {
-    "test": "gulp test",
-    "release": "standard-version"
+    "typedoc": "typedoc --json docs/doc.json ./lib",
+    "release": "standard-version",
+    "jsdoc": "jsdoc2md ./dist/lib/temp-mail.js -t jsdoc2md/README.hbs  > README.md"
   },
   "author": "pichuser",
   "license": "ISC",
