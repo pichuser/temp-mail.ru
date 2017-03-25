@@ -11,6 +11,7 @@
     "@types/node": "~6.0.46",
     "@types/superagent": "^2.0.36",
     "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
     "gulp-typescript": "^3.1.6",
     "merge2": "^1.0.3",
     "typedoc": "https://github.com/DatenMetzgerX/typedoc/tarball/typescript-2-build",
@@ -18,7 +19,7 @@
   },
   "scripts": {
     "typedoc": "typedoc --json docs/doc.json ./lib",
-    "release": "standard-version",
+    "release": "gulp",
     "jsdoc": "jsdoc2md ./dist/lib/temp-mail.js ./dist/lib/* -t jsdoc2md/README.hbs  > README.md"
   },
   "repository": {
