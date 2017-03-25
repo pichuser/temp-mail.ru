@@ -14,6 +14,7 @@
     "gulp-clean": "^0.3.2",
     "gulp-typescript": "^3.1.6",
     "merge2": "^1.0.3",
+    "run-sequence": "^1.2.2",
     "typedoc": "https://github.com/DatenMetzgerX/typedoc/tarball/typescript-2-build",
     "typescript": "^2.2.1"
   },
