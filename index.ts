@@ -1,1 +1,2 @@
-export * from './lib/temp-mail';
+import {TempMailWrapper} from './lib/temp-mail';
+module.exports = TempMailWrapper;

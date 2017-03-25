@@ -2,25 +2,23 @@ import  * as request from 'superagent';
 import * as md5 from 'js-md5';
 import { Observable } from 'rxjs';
 import * as uuid from 'uuid';
-import { IMailObject } from './mailObject.interface';
-/**
- * @module pichuser
- */
+import { MailObject } from './mailObject.model';
+
+/** @module pichuser */
 /** Class representing wrapper. */
 export class TempMailWrapper {
 
-    private _apiUrl = 'http://api.temp-mail.ru';
-    private _format = '/format/json';
-    private getUrl(suburl){
+    private static _apiUrl = 'http://api.temp-mail.ru';
+    private static _format = '/format/json';
+    private static getUrl(suburl){
         return `${this._apiUrl}${suburl}${this._format}`;
     }
-
 
     /**
         Get all available domains
         @return {Observable<Array<string>>}
      */
-    public domains(): Observable<Array<string>> {
+    public static domains(): Observable<Array<string>> {
         return new Observable<Array<string>> ((observable) => {
             request.get(this.getUrl('/request/domains'))
                 .set('Accept', 'application/json')
@@ -34,9 +32,9 @@ export class TempMailWrapper {
     /**
      * Get all emails by mail name
      * @param mailName
-     * @return {Observable<Array<any>>}
+     * @return {Observable<Array<module:pichuser~MailObject>>}
      */
-    public mails(mailName: string): Observable<Array<IMailObject>> {
+    public static mails(mailName: string): Observable<Array<MailObject>> {
         return new Observable<Array<any>> ((observable) => {
             let hash = md5(mailName);
             request.get(this.getUrl(`/request/source/id/${hash}`))
@@ -53,7 +51,7 @@ export class TempMailWrapper {
      * @param mailName
      * @return {Observable<number>}
      */
-    public mailsCount(mailName: string) {
+    public static mailsCount(mailName: string) {
         return new Observable<number>((observable) => {
             this.mails(mailName)
                 .subscribe((res) => {
@@ -67,7 +65,7 @@ export class TempMailWrapper {
      * Get free email
      * @return {Observable<string>}
      */
-    public randomFreeEmail(): Observable<string> {
+    public static randomFreeEmail(): Observable<string> {
         return new Observable<string>((observable) => {
             this.domains().subscribe((domains) => {
                 let self = this;
@@ -93,7 +91,7 @@ export class TempMailWrapper {
      * @param id
      * @return {Observable<boolean>}
      */
-    public deleteMail(id): Observable<boolean> {
+    public static deleteMail(id: string): Observable<boolean> {
         return new Observable<boolean> ((observable) => {
             request.get(this.getUrl(`/request/delete/id/${id}`))
                 .set('Accept', 'application/json')
@@ -111,23 +109,30 @@ export class TempMailWrapper {
     /**
      * Return first available letter
      * @param mailName
-     * @return {Observable<IMailObject>}
+     * @param timeout
+     * @return {Observable<module:pichuser~MailObject>}
      */
-    public waitForMail(mailName): Observable<IMailObject> {
-        return new Observable<IMailObject> ((observable) => {
+    public static waitForMail(mailName: string, timeout: number = null): Observable<MailObject> {
+        return new Observable<MailObject> ((observable) => {
             let self = this;
+            let isTimeout = false;
+            if(timeout){
+                setTimeout(() => {
+                    observable.error('Timeout');
+                    observable.complete();
+                    isTimeout = true;
+                }, timeout * 1000);
+            }
             async function getM() {
-                while(true){
+                while(!isTimeout){
                     let count = await self.mailsCount(mailName).first().toPromise();
                     if(count > 0){
                         await self.sleep(1);
                         let mails = await self.mails(mailName).first().toPromise();
-                        console.log(mails);
                         observable.next(mails[0]);
                         observable.complete();
                         return;
                     }
-                    console.log('no letter');
                     await self.sleep(1);
                 }
             }
@@ -135,7 +140,7 @@ export class TempMailWrapper {
         });
     }
 
-    private sleep(seconds){
+    private static sleep(seconds){
          return new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve();

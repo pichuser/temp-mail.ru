@@ -19,7 +19,7 @@
   "scripts": {
     "typedoc": "typedoc --json docs/doc.json ./lib",
     "release": "standard-version",
-    "jsdoc": "jsdoc2md ./dist/lib/temp-mail.js -t jsdoc2md/README.hbs  > README.md"
+    "jsdoc": "jsdoc2md ./dist/lib/* -t jsdoc2md/README.hbs  > README.md"
   },
   "author": "pichuser",
   "license": "ISC",
