@@ -11,6 +11,13 @@ $ npm install temp-mail.ru --save
 # API Reference
     
 * [pichuser](#module_pichuser)
+    * [~TempMailWrapper](#module_pichuser..TempMailWrapper)
+        * [.domains()](#module_pichuser..TempMailWrapper.domains) ⇒ <code>Observable.&lt;Array.&lt;string&gt;&gt;</code>
+        * [.mails(mailName)](#module_pichuser..TempMailWrapper.mails) ⇒ <code>Observable.&lt;Array.&lt;module:pichuser~MailObject&gt;&gt;</code>
+        * [.mailsCount(mailName)](#module_pichuser..TempMailWrapper.mailsCount) ⇒ <code>Observable.&lt;number&gt;</code>
+        * [.randomFreeEmail()](#module_pichuser..TempMailWrapper.randomFreeEmail) ⇒ <code>Observable.&lt;string&gt;</code>
+        * [.deleteMail(id)](#module_pichuser..TempMailWrapper.deleteMail) ⇒ <code>Observable.&lt;boolean&gt;</code>
+        * [.waitForMail(mailName, timeout)](#module_pichuser..TempMailWrapper.waitForMail) ⇒ <code>[Observable.&lt;MailObject&gt;](#module_pichuser..MailObject)</code>
     * [~MailObject](#module_pichuser..MailObject)
         * [.mail_unique_id](#module_pichuser..MailObject.MailObject+mail_unique_id)
         * [.mail_id](#module_pichuser..MailObject.MailObject+mail_id)
@@ -21,13 +28,78 @@ $ npm install temp-mail.ru --save
         * [.mail_text_only](#module_pichuser..MailObject.MailObject+mail_text_only)
         * [.mail_text](#module_pichuser..MailObject.MailObject+mail_text)
         * [.mail_html](#module_pichuser..MailObject.MailObject+mail_html)
-    * [~TempMailWrapper](#module_pichuser..TempMailWrapper)
-        * [.domains()](#module_pichuser..TempMailWrapper.domains) ⇒ <code>Observable.&lt;Array.&lt;string&gt;&gt;</code>
-        * [.mails(mailName)](#module_pichuser..TempMailWrapper.mails) ⇒ <code>Observable.&lt;Array.&lt;MailObject&gt;&gt;</code>
-        * [.mailsCount(mailName)](#module_pichuser..TempMailWrapper.mailsCount) ⇒ <code>Observable.&lt;number&gt;</code>
-        * [.randomFreeEmail()](#module_pichuser..TempMailWrapper.randomFreeEmail) ⇒ <code>Observable.&lt;string&gt;</code>
-        * [.deleteMail(id)](#module_pichuser..TempMailWrapper.deleteMail) ⇒ <code>Observable.&lt;boolean&gt;</code>
-        * [.waitForMail(mailName, timeout)](#module_pichuser..TempMailWrapper.waitForMail) ⇒ <code>[Observable.&lt;MailObject&gt;](#module_pichuser..MailObject)</code>
+
+<a name="module_pichuser..TempMailWrapper"></a>
+
+### pichuser~TempMailWrapper
+Class representing wrapper.
+
+**Kind**: inner class of <code>[pichuser](#module_pichuser)</code>  
+
+* [~TempMailWrapper](#module_pichuser..TempMailWrapper)
+    * [.domains()](#module_pichuser..TempMailWrapper.domains) ⇒ <code>Observable.&lt;Array.&lt;string&gt;&gt;</code>
+    * [.mails(mailName)](#module_pichuser..TempMailWrapper.mails) ⇒ <code>Observable.&lt;Array.&lt;module:pichuser~MailObject&gt;&gt;</code>
+    * [.mailsCount(mailName)](#module_pichuser..TempMailWrapper.mailsCount) ⇒ <code>Observable.&lt;number&gt;</code>
+    * [.randomFreeEmail()](#module_pichuser..TempMailWrapper.randomFreeEmail) ⇒ <code>Observable.&lt;string&gt;</code>
+    * [.deleteMail(id)](#module_pichuser..TempMailWrapper.deleteMail) ⇒ <code>Observable.&lt;boolean&gt;</code>
+    * [.waitForMail(mailName, timeout)](#module_pichuser..TempMailWrapper.waitForMail) ⇒ <code>[Observable.&lt;MailObject&gt;](#module_pichuser..MailObject)</code>
+
+<a name="module_pichuser..TempMailWrapper.domains"></a>
+
+#### TempMailWrapper.domains() ⇒ <code>Observable.&lt;Array.&lt;string&gt;&gt;</code>
+Get all available domains
+
+**Kind**: static method of <code>[TempMailWrapper](#module_pichuser..TempMailWrapper)</code>  
+<a name="module_pichuser..TempMailWrapper.mails"></a>
+
+#### TempMailWrapper.mails(mailName) ⇒ <code>Observable.&lt;Array.&lt;module:pichuser~MailObject&gt;&gt;</code>
+Get all emails by mail name
+
+**Kind**: static method of <code>[TempMailWrapper](#module_pichuser..TempMailWrapper)</code>  
+
+| Param |
+| --- |
+| mailName | 
+
+<a name="module_pichuser..TempMailWrapper.mailsCount"></a>
+
+#### TempMailWrapper.mailsCount(mailName) ⇒ <code>Observable.&lt;number&gt;</code>
+Return count of mails in box
+
+**Kind**: static method of <code>[TempMailWrapper](#module_pichuser..TempMailWrapper)</code>  
+
+| Param |
+| --- |
+| mailName | 
+
+<a name="module_pichuser..TempMailWrapper.randomFreeEmail"></a>
+
+#### TempMailWrapper.randomFreeEmail() ⇒ <code>Observable.&lt;string&gt;</code>
+Get free email
+
+**Kind**: static method of <code>[TempMailWrapper](#module_pichuser..TempMailWrapper)</code>  
+<a name="module_pichuser..TempMailWrapper.deleteMail"></a>
+
+#### TempMailWrapper.deleteMail(id) ⇒ <code>Observable.&lt;boolean&gt;</code>
+Delete email by id
+
+**Kind**: static method of <code>[TempMailWrapper](#module_pichuser..TempMailWrapper)</code>  
+
+| Param |
+| --- |
+| id | 
+
+<a name="module_pichuser..TempMailWrapper.waitForMail"></a>
+
+#### TempMailWrapper.waitForMail(mailName, timeout) ⇒ <code>[Observable.&lt;MailObject&gt;](#module_pichuser..MailObject)</code>
+Return first available letter
+
+**Kind**: static method of <code>[TempMailWrapper](#module_pichuser..TempMailWrapper)</code>  
+
+| Param | Default |
+| --- | --- |
+| mailName |  | 
+| timeout | <code></code> | 
 
 <a name="module_pichuser..MailObject"></a>
 
@@ -100,78 +172,6 @@ Cообщение только в текстовом формате
 mail HTML
 
 **Kind**: instance property of <code>[MailObject](#module_pichuser..MailObject)</code>  
-<a name="module_pichuser..TempMailWrapper"></a>
-
-### pichuser~TempMailWrapper
-Class representing wrapper.
-
-**Kind**: inner class of <code>[pichuser](#module_pichuser)</code>  
-
-* [~TempMailWrapper](#module_pichuser..TempMailWrapper)
-    * [.domains()](#module_pichuser..TempMailWrapper.domains) ⇒ <code>Observable.&lt;Array.&lt;string&gt;&gt;</code>
-    * [.mails(mailName)](#module_pichuser..TempMailWrapper.mails) ⇒ <code>Observable.&lt;Array.&lt;MailObject&gt;&gt;</code>
-    * [.mailsCount(mailName)](#module_pichuser..TempMailWrapper.mailsCount) ⇒ <code>Observable.&lt;number&gt;</code>
-    * [.randomFreeEmail()](#module_pichuser..TempMailWrapper.randomFreeEmail) ⇒ <code>Observable.&lt;string&gt;</code>
-    * [.deleteMail(id)](#module_pichuser..TempMailWrapper.deleteMail) ⇒ <code>Observable.&lt;boolean&gt;</code>
-    * [.waitForMail(mailName, timeout)](#module_pichuser..TempMailWrapper.waitForMail) ⇒ <code>[Observable.&lt;MailObject&gt;](#module_pichuser..MailObject)</code>
-
-<a name="module_pichuser..TempMailWrapper.domains"></a>
-
-#### TempMailWrapper.domains() ⇒ <code>Observable.&lt;Array.&lt;string&gt;&gt;</code>
-Get all available domains
-
-**Kind**: static method of <code>[TempMailWrapper](#module_pichuser..TempMailWrapper)</code>  
-<a name="module_pichuser..TempMailWrapper.mails"></a>
-
-#### TempMailWrapper.mails(mailName) ⇒ <code>Observable.&lt;Array.&lt;MailObject&gt;&gt;</code>
-Get all emails by mail name
-
-**Kind**: static method of <code>[TempMailWrapper](#module_pichuser..TempMailWrapper)</code>  
-
-| Param |
-| --- |
-| mailName | 
-
-<a name="module_pichuser..TempMailWrapper.mailsCount"></a>
-
-#### TempMailWrapper.mailsCount(mailName) ⇒ <code>Observable.&lt;number&gt;</code>
-Return count of mails in box
-
-**Kind**: static method of <code>[TempMailWrapper](#module_pichuser..TempMailWrapper)</code>  
-
-| Param |
-| --- |
-| mailName | 
-
-<a name="module_pichuser..TempMailWrapper.randomFreeEmail"></a>
-
-#### TempMailWrapper.randomFreeEmail() ⇒ <code>Observable.&lt;string&gt;</code>
-Get free email
-
-**Kind**: static method of <code>[TempMailWrapper](#module_pichuser..TempMailWrapper)</code>  
-<a name="module_pichuser..TempMailWrapper.deleteMail"></a>
-
-#### TempMailWrapper.deleteMail(id) ⇒ <code>Observable.&lt;boolean&gt;</code>
-Delete email by id
-
-**Kind**: static method of <code>[TempMailWrapper](#module_pichuser..TempMailWrapper)</code>  
-
-| Param |
-| --- |
-| id | 
-
-<a name="module_pichuser..TempMailWrapper.waitForMail"></a>
-
-#### TempMailWrapper.waitForMail(mailName, timeout) ⇒ <code>[Observable.&lt;MailObject&gt;](#module_pichuser..MailObject)</code>
-Return first available letter
-
-**Kind**: static method of <code>[TempMailWrapper](#module_pichuser..TempMailWrapper)</code>  
-
-| Param | Default |
-| --- | --- |
-| mailName |  | 
-| timeout | <code></code> | 
-
 
 * * *
 
