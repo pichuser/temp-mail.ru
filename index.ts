@@ -1,2 +1,2 @@
-import {TempMailWrapper} from './lib/temp-mail';
-module.exports = TempMailWrapper;
+import t from './lib/temp-mail';
+export default t;

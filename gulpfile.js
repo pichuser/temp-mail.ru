@@ -24,3 +24,7 @@ gulp.task('clean', function () {
 gulp.task('default', function(done) {
     runSequence('clean', 'build', done);
 });
+
+gulp.task('watch', function() {
+    gulp.watch(["./lib/**/*.ts"], ['build']);
+});
