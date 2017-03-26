@@ -21,6 +21,7 @@
   "scripts": {
     "typedoc": "typedoc --json docs/doc.json ./lib",
     "release": "gulp",
+    "prepublish": "gulp",
     "compile": "npm run release",
     "jsdoc": "jsdoc2md ./dist/lib/temp-mail.js ./dist/lib/* -t jsdoc2md/README.hbs  > README.md"
   },
