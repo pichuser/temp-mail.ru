@@ -6,7 +6,7 @@ import { MailObject } from './mailObject.model';
 
 /** @module pichuser */
 /** Class representing wrapper. */
-export class TempMailWrapper {
+export default class TempMailWrapper {
 
     private static _apiUrl = 'http://api.temp-mail.ru';
     private static _format = '/format/json';
