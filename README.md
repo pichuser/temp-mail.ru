@@ -35,7 +35,17 @@ TempMail.randomFreeEmail().subscribe(function(mailName) {
         * [.mailsCount(mailName)](#module_pichuser..TempMail.mailsCount) ⇒ <code>Observable.&lt;number&gt;</code>
         * [.randomFreeEmail()](#module_pichuser..TempMail.randomFreeEmail) ⇒ <code>Observable.&lt;string&gt;</code>
         * [.deleteMail(id)](#module_pichuser..TempMail.deleteMail) ⇒ <code>Observable.&lt;boolean&gt;</code>
-        * [.waitForMail(mailName, timeout)](#module_pichuser..TempMail.waitForMail) ⇒ <code>Observable.&lt;module:pichuser~MailObject&gt;</code>
+        * [.waitForMail(mailName, timeout)](#module_pichuser..TempMail.waitForMail) ⇒ <code>[Observable.&lt;MailObject&gt;](#module_pichuser..MailObject)</code>
+    * [~MailObject](#module_pichuser..MailObject)
+        * [.mail_unique_id](#module_pichuser..MailObject.MailObject+mail_unique_id)
+        * [.mail_id](#module_pichuser..MailObject.MailObject+mail_id)
+        * [.mail_address_id](#module_pichuser..MailObject.MailObject+mail_address_id)
+        * [.mail_from](#module_pichuser..MailObject.MailObject+mail_from)
+        * [.mail_subject](#module_pichuser..MailObject.MailObject+mail_subject)
+        * [.mail_preview](#module_pichuser..MailObject.MailObject+mail_preview)
+        * [.mail_text_only](#module_pichuser..MailObject.MailObject+mail_text_only)
+        * [.mail_text](#module_pichuser..MailObject.MailObject+mail_text)
+        * [.mail_html](#module_pichuser..MailObject.MailObject+mail_html)
 
 <a name="module_pichuser..TempMail"></a>
 
@@ -48,7 +58,7 @@ TempMail.randomFreeEmail().subscribe(function(mailName) {
     * [.mailsCount(mailName)](#module_pichuser..TempMail.mailsCount) ⇒ <code>Observable.&lt;number&gt;</code>
     * [.randomFreeEmail()](#module_pichuser..TempMail.randomFreeEmail) ⇒ <code>Observable.&lt;string&gt;</code>
     * [.deleteMail(id)](#module_pichuser..TempMail.deleteMail) ⇒ <code>Observable.&lt;boolean&gt;</code>
-    * [.waitForMail(mailName, timeout)](#module_pichuser..TempMail.waitForMail) ⇒ <code>Observable.&lt;module:pichuser~MailObject&gt;</code>
+    * [.waitForMail(mailName, timeout)](#module_pichuser..TempMail.waitForMail) ⇒ <code>[Observable.&lt;MailObject&gt;](#module_pichuser..MailObject)</code>
 
 <a name="module_pichuser..TempMail.domains"></a>
 
@@ -129,7 +139,7 @@ Delete email by id
 ```
 <a name="module_pichuser..TempMail.waitForMail"></a>
 
-#### TempMail.waitForMail(mailName, timeout) ⇒ <code>Observable.&lt;module:pichuser~MailObject&gt;</code>
+#### TempMail.waitForMail(mailName, timeout) ⇒ <code>[Observable.&lt;MailObject&gt;](#module_pichuser..MailObject)</code>
 Return first available letter
 
 **Kind**: static method of <code>[TempMail](#module_pichuser..TempMail)</code>  
@@ -148,6 +158,77 @@ Return first available letter
         alert("Mailbox still empty")
     });
 ```
+<a name="module_pichuser..MailObject"></a>
+
+### pichuser~MailObject
+**Kind**: inner class of <code>[pichuser](#module_pichuser)</code>  
+
+* [~MailObject](#module_pichuser..MailObject)
+    * [.mail_unique_id](#module_pichuser..MailObject.MailObject+mail_unique_id)
+    * [.mail_id](#module_pichuser..MailObject.MailObject+mail_id)
+    * [.mail_address_id](#module_pichuser..MailObject.MailObject+mail_address_id)
+    * [.mail_from](#module_pichuser..MailObject.MailObject+mail_from)
+    * [.mail_subject](#module_pichuser..MailObject.MailObject+mail_subject)
+    * [.mail_preview](#module_pichuser..MailObject.MailObject+mail_preview)
+    * [.mail_text_only](#module_pichuser..MailObject.MailObject+mail_text_only)
+    * [.mail_text](#module_pichuser..MailObject.MailObject+mail_text)
+    * [.mail_html](#module_pichuser..MailObject.MailObject+mail_html)
+
+<a name="module_pichuser..MailObject.MailObject+mail_unique_id"></a>
+
+#### mailObject.mail_unique_id
+Unique identifier assigned by the system.
+
+**Kind**: instance property of <code>[MailObject](#module_pichuser..MailObject)</code>  
+**Fieldof**: pichuser.MailObject  
+<a name="module_pichuser..MailObject.MailObject+mail_id"></a>
+
+#### mailObject.mail_id
+md5 email address hash
+
+**Kind**: instance property of <code>[MailObject](#module_pichuser..MailObject)</code>  
+<a name="module_pichuser..MailObject.MailObject+mail_address_id"></a>
+
+#### mailObject.mail_address_id
+md5 хеш почтового адреса
+
+**Kind**: instance property of <code>[MailObject](#module_pichuser..MailObject)</code>  
+<a name="module_pichuser..MailObject.MailObject+mail_from"></a>
+
+#### mailObject.mail_from
+Sender
+
+**Kind**: instance property of <code>[MailObject](#module_pichuser..MailObject)</code>  
+<a name="module_pichuser..MailObject.MailObject+mail_subject"></a>
+
+#### mailObject.mail_subject
+Subject
+
+**Kind**: instance property of <code>[MailObject](#module_pichuser..MailObject)</code>  
+<a name="module_pichuser..MailObject.MailObject+mail_preview"></a>
+
+#### mailObject.mail_preview
+Preview
+
+**Kind**: instance property of <code>[MailObject](#module_pichuser..MailObject)</code>  
+<a name="module_pichuser..MailObject.MailObject+mail_text_only"></a>
+
+#### mailObject.mail_text_only
+Message in text or html format (main)
+
+**Kind**: instance property of <code>[MailObject](#module_pichuser..MailObject)</code>  
+<a name="module_pichuser..MailObject.MailObject+mail_text"></a>
+
+#### mailObject.mail_text
+Message only in text format
+
+**Kind**: instance property of <code>[MailObject](#module_pichuser..MailObject)</code>  
+<a name="module_pichuser..MailObject.MailObject+mail_html"></a>
+
+#### mailObject.mail_html
+Message only in html format
+
+**Kind**: instance property of <code>[MailObject](#module_pichuser..MailObject)</code>  
 
 * * *
 

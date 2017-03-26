@@ -2,6 +2,9 @@
  * @module pichuser
  */
 
+/**
+ * @class MailObject
+ * */
 export class MailObject {
 
     /**
