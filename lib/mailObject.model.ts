@@ -9,17 +9,16 @@ export class MailObject {
 
     /**
      * Unique identifier assigned by the system.
-     * @fieldOf pichuser.MailObject
      */
     mail_unique_id: string = "";
 
     /**
-     * md5 email address hash
+     * Unique identifier of the message in md5 hash assigned by the system.
      */
     mail_id: string = "";
 
     /**
-     * md5 хеш почтового адреса
+     * md5 email address hash
      */
     mail_address_id: string = "";
 
