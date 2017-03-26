@@ -180,17 +180,16 @@ Return first available letter
 Unique identifier assigned by the system.
 
 **Kind**: instance property of <code>[MailObject](#module_pichuser..MailObject)</code>  
-**Fieldof**: pichuser.MailObject  
 <a name="module_pichuser..MailObject.MailObject+mail_id"></a>
 
 #### mailObject.mail_id
-md5 email address hash
+Unique identifier of the message in md5 hash assigned by the system.
 
 **Kind**: instance property of <code>[MailObject](#module_pichuser..MailObject)</code>  
 <a name="module_pichuser..MailObject.MailObject+mail_address_id"></a>
 
 #### mailObject.mail_address_id
-md5 хеш почтового адреса
+md5 email address hash
 
 **Kind**: instance property of <code>[MailObject](#module_pichuser..MailObject)</code>  
 <a name="module_pichuser..MailObject.MailObject+mail_from"></a>
