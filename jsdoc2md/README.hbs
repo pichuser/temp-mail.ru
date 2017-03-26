@@ -8,6 +8,24 @@ Node.js wrapper for temp-mail.ru api.
 $ npm install temp-mail.ru --save
 ```
 
+## How to
+
+TypeScript:
+```ts
+import TempMail from "temp-mail.ru";
+TempMail.randomFreeEmail().subscribe((mailName) => {
+    console.log(mailName);
+});
+```
+
+JavaScript:
+```js
+var TempMail = require("temp-mail.ru").default;
+TempMail.randomFreeEmail().subscribe(function(mailName) {
+    console.log(mailName);
+});
+```
+
 # API Reference
 {{#module name="pichuser"}}
     {{>body~}}

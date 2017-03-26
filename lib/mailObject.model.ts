@@ -2,19 +2,16 @@
  * @module pichuser
  */
 
-/**
- * @class MailObject
- * */
 export class MailObject {
 
     /**
-     * Уникальный идентификатор письма, присвоенный системой
+     * Unique identifier assigned by the system.
      * @fieldOf pichuser.MailObject
      */
     mail_unique_id: string = "";
 
     /**
-     * Уникальный идентификатор письма в md5 хеше, присвоенный системой
+     * md5 email address hash
      */
     mail_id: string = "";
 
@@ -24,32 +21,32 @@ export class MailObject {
     mail_address_id: string = "";
 
     /**
-     * Отправитель
+     * Sender
      */
     mail_from: string = "";
 
     /**
-     * Тема
+     * Subject
      */
     mail_subject: string = "";
 
     /**
-     * Предпросмотр сообщения
+     * Preview
      */
     mail_preview: string = "";
 
     /**
-     * Cообщение в текстовом или в html формате (основной)
+     * Message in text or html format (main)
      */
     mail_text_only: string = "";
 
     /**
-     * Cообщение только в текстовом формате
+     * Message only in text format
      */
     mail_text: string = "";
 
     /**
-     * mail HTML
+     * Message only in html format
      */
     mail_html: string = "";
 }
