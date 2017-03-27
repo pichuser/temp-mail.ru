@@ -86,7 +86,7 @@ export default class TempMailWrapper {
         return new Observable<number>((observable) => {
             this.mails(mailName)
                 .subscribe((res) => {
-                    observable.next(res.length || -1);
+                    observable.next(res.length);
                     observable.complete();
                 });
         });
@@ -113,9 +113,10 @@ export default class TempMailWrapper {
                     let mailName = uuid.v4() + domains[0];
                     self.mailsCount(mailName)
                         .subscribe((resp) => {
+                            console.log(resp);
                             if (resp === 0) {
                                 observable.next(mailName);
-                                observable.complete()
+                                    observable.complete()
                             } else {
                                 getM();
                             }
