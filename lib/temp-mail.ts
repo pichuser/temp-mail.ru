@@ -113,10 +113,9 @@ export default class TempMailWrapper {
                     let mailName = uuid.v4() + domains[0];
                     self.mailsCount(mailName)
                         .subscribe((resp) => {
-                            console.log(resp);
                             if (resp === 0) {
                                 observable.next(mailName);
-                                    observable.complete()
+                                observable.complete();
                             } else {
                                 getM();
                             }
