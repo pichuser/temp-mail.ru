@@ -1,8 +1,17 @@
 import  * as request from 'superagent';
 import * as md5 from 'js-md5';
-import { Observable } from 'rxjs';
+import {
+    Observable,
+    of,
+} from 'rxjs';
 import * as uuid from 'uuid';
 import { MailObject } from './mailObject.model';
+import {
+    delay,
+    first,
+} from 'rxjs/internal/operators';
+
+const API_KEY = 'f1a7767544msh2124d821d2582fep1cb46ejsnccce8ac8dd2c';
 
 /** @module pichuser */
 /**
@@ -10,12 +19,16 @@ import { MailObject } from './mailObject.model';
  */
 export default class TempMailWrapper {
 
-    private static _apiUrl = 'http://api.temp-mail.ru';
-    private static _format = '/format/json';
+    private static _apiUrl = 'https://privatix-temp-mail-v1.p.rapidapi.com';
 
     private static getUrl(suburl) {
-        return `${this._apiUrl}${suburl}${this._format}`;
+        return `${this._apiUrl}${suburl}`;
     }
+
+    private static requestCustom(url): request.SuperAgentRequest {
+        return request.get(TempMailWrapper.getUrl(url))
+            .set('X-RapidAPI-Key', API_KEY);
+    };
 
     /**
      Get all available domains
@@ -30,10 +43,13 @@ export default class TempMailWrapper {
      */
     public static domains(): Observable<Array<string>> {
         return new Observable<Array<string>>((observable) => {
-            request.get(this.getUrl('/request/domains'))
-                .set('Accept', 'application/json')
+            this.requestCustom('/request/domains/')
                 .end((err, res) => {
-                    observable.next(res.body);
+                    if (err) {
+                        observable.error(err);
+                    } else {
+                        observable.next(res.body);
+                    }
                     observable.complete();
                 });
         });
@@ -42,7 +58,7 @@ export default class TempMailWrapper {
     /**
      Get all emails by mail name
      @param mailName {string} - email on temp-mail.ru
-     @returns {Observable<Array<module:pichuser~MailObject>>}
+     @returns {Observable<Array<MailObject>>}
      @example
 
      ```js
@@ -55,11 +71,10 @@ export default class TempMailWrapper {
     public static mails(mailName: string): Observable<Array<MailObject>> {
         return new Observable<Array<any>>((observable) => {
             let hash = md5(mailName);
-            request.get(this.getUrl(`/request/source/id/${hash}`))
-                .set('Accept', 'application/json')
+            this.requestCustom(`/request/mail/id/${hash}/`)
                 .end((err, res) => {
                     if (err) {
-                        observable.next([]);
+                        observable.error(err);
                     } else {
                         observable.next(res.body);
                     }
@@ -107,11 +122,9 @@ export default class TempMailWrapper {
     public static randomFreeEmail(): Observable<string> {
         return new Observable<string>((observable) => {
             this.domains().subscribe((domains) => {
-                let self = this;
-
-                function getM() {
+                const getM = () => {
                     let mailName = uuid.v4() + domains[0];
-                    self.mailsCount(mailName)
+                    this.mailsCount(mailName)
                         .subscribe((resp) => {
                             if (resp === 0) {
                                 observable.next(mailName);
@@ -120,7 +133,7 @@ export default class TempMailWrapper {
                                 getM();
                             }
                         })
-                }
+                };
 
                 getM();
             })
@@ -142,8 +155,7 @@ export default class TempMailWrapper {
      */
     public static deleteMail(id: string): Observable<boolean> {
         return new Observable<boolean>((observable) => {
-            request.get(this.getUrl(`/request/delete/id/${id}`))
-                .set('Accept', 'application/json')
+            this.requestCustom(`/request/delete/id/${id}/`)
                 .end((err, res) => {
                     if (res.status !== 200) {
                         observable.next(false);
@@ -159,7 +171,7 @@ export default class TempMailWrapper {
      * Return first available letter
      * @param mailName {string} - email on temp-mail.ru
      * @param timeout {number?} - timeout in seconds
-     * @returns {Observable<module:pichuser~MailObject>}
+     * @returns {Observable<MailObject>}
      * @example
 
      ```js
@@ -174,7 +186,6 @@ export default class TempMailWrapper {
      */
     public static waitForMail(mailName: string, timeout: number = null): Observable<MailObject> {
         return new Observable<MailObject>((observable) => {
-            let self = this;
             let isTimeout = false;
             if (timeout) {
                 setTimeout(() => {
@@ -183,29 +194,25 @@ export default class TempMailWrapper {
                     isTimeout = true;
                 }, timeout * 1000);
             }
-            async function getM() {
+            const getM = async () => {
                 while (!isTimeout) {
-                    let count = await self.mailsCount(mailName).first().toPromise();
+                    let count = await this.mailsCount(mailName).pipe(first()).toPromise();
                     if (count > 0) {
-                        await self.sleep(1);
-                        let mails = await self.mails(mailName).first().toPromise();
+                        await this.sleep(1);
+                        let mails = await this.mails(mailName).pipe(first()).toPromise();
                         observable.next(mails[0]);
                         observable.complete();
                         return;
                     }
-                    await self.sleep(1);
+                    await this.sleep(1);
                 }
-            }
+            };
             getM();
         });
     }
 
     private static sleep(seconds) {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve();
-            }, seconds * 1000);
-        });
+        return of(null).pipe(delay(1000)).toPromise();
     }
 
 }
