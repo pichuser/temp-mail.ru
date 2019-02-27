@@ -37,7 +37,7 @@ TempMail.randomFreeEmail().subscribe(function(mailName) {
         * [.deleteMail(id)](#module_pichuser..TempMail.deleteMail) ⇒ <code>Observable.&lt;boolean&gt;</code>
         * [.waitForMail(mailName, timeout)](#module_pichuser..TempMail.waitForMail) ⇒ <code>Observable.&lt;MailObject&gt;</code>
     * [~MailObject](#module_pichuser..MailObject)
-        * [.mail_unique_id](#module_pichuser..MailObject+mail_unique_id)
+        * [.mail_unique_id](#module_pichuser..MailObject+mail_unique_id) : <code>string</code>
         * [.mail_id](#module_pichuser..MailObject+mail_id)
         * [.mail_address_id](#module_pichuser..MailObject+mail_address_id)
         * [.mail_from](#module_pichuser..MailObject+mail_from)
@@ -164,7 +164,7 @@ Return first available letter
 **Kind**: inner class of [<code>pichuser</code>](#module_pichuser)  
 
 * [~MailObject](#module_pichuser..MailObject)
-    * [.mail_unique_id](#module_pichuser..MailObject+mail_unique_id)
+    * [.mail_unique_id](#module_pichuser..MailObject+mail_unique_id) : <code>string</code>
     * [.mail_id](#module_pichuser..MailObject+mail_id)
     * [.mail_address_id](#module_pichuser..MailObject+mail_address_id)
     * [.mail_from](#module_pichuser..MailObject+mail_from)
@@ -176,7 +176,7 @@ Return first available letter
 
 <a name="module_pichuser..MailObject+mail_unique_id"></a>
 
-#### mailObject.mail\_unique\_id
+#### mailObject.mail\_unique\_id : <code>string</code>
 Unique identifier assigned by the system.
 
 **Kind**: instance property of [<code>MailObject</code>](#module_pichuser..MailObject)  

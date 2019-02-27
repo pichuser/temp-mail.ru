@@ -1,3 +1,4 @@
+let stub = 1;
 /**
  * @module pichuser
  */
@@ -5,50 +6,52 @@
 /**
  * @class MailObject
  * */
+stub = 1;
 export class MailObject {
 
     /**
      * Unique identifier assigned by the system.
+     * @type {string}
      */
-    mail_unique_id: string = "";
+    public mail_unique_id: string = "";
 
     /**
      * Unique identifier of the message in md5 hash assigned by the system.
      */
-    mail_id: string = "";
+    public mail_id: string = "";
 
     /**
      * md5 email address hash
      */
-    mail_address_id: string = "";
+    public mail_address_id: string = "";
 
     /**
      * Sender
      */
-    mail_from: string = "";
+    public mail_from: string = "";
 
     /**
      * Subject
      */
-    mail_subject: string = "";
+    public mail_subject: string = "";
 
     /**
      * Preview
      */
-    mail_preview: string = "";
+    public mail_preview: string = "";
 
     /**
      * Message in text or html format (main)
      */
-    mail_text_only: string = "";
+    public mail_text_only: string = "";
 
     /**
      * Message only in text format
      */
-    mail_text: string = "";
+    public mail_text: string = "";
 
     /**
      * Message only in html format
      */
-    mail_html: string = "";
+    public mail_html: string = "";
 }

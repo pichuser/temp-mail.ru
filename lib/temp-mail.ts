@@ -100,9 +100,12 @@ export default class TempMailWrapper {
     public static mailsCount(mailName: string) {
         return new Observable<number>((observable) => {
             this.mails(mailName)
-                .subscribe((res) => {
-                    observable.next(res.length);
-                    observable.complete();
+                .subscribe({
+                    next: (res) => {
+                        observable.next(res.length || 0);
+                    },
+                    error: (err) => observable.error(err),
+                    complete: () => observable.complete(),
                 });
         });
     }
